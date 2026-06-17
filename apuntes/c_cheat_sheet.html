@@ -1,0 +1,437 @@
+
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--font-mono); }
+.cs { padding: 1rem 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 12px; }
+.card { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); overflow: hidden; }
+.card-head { padding: 10px 14px; display: flex; align-items: center; gap: 8px; border-bottom: 0.5px solid var(--color-border-tertiary); }
+.card-head span { font-family: var(--font-sans); font-size: 13px; font-weight: 500; color: var(--color-text-primary); }
+.badge { font-family: var(--font-sans); font-size: 11px; font-weight: 500; padding: 2px 8px; border-radius: 20px; margin-left: auto; }
+.b-blue { background: #E6F1FB; color: #0C447C; }
+.b-teal { background: #E1F5EE; color: #085041; }
+.b-purple { background: #EEEDFE; color: #3C3489; }
+.b-amber { background: #FAEEDA; color: #633806; }
+.b-coral { background: #FAECE7; color: #712B13; }
+.b-green { background: #EAF3DE; color: #27500A; }
+.b-pink { background: #FBEAF0; color: #72243E; }
+@media (prefers-color-scheme: dark) {
+  .b-blue { background: #0C447C; color: #B5D4F4; }
+  .b-teal { background: #085041; color: #9FE1CB; }
+  .b-purple { background: #3C3489; color: #CECBF6; }
+  .b-amber { background: #633806; color: #FAC775; }
+  .b-coral { background: #712B13; color: #F5C4B3; }
+  .b-green { background: #27500A; color: #C0DD97; }
+  .b-pink { background: #72243E; color: #F4C0D1; }
+}
+.card-body { padding: 12px 14px; display: flex; flex-direction: column; gap: 8px; }
+pre { background: var(--color-background-secondary); border-radius: 6px; padding: 10px 12px; font-size: 12px; line-height: 1.6; overflow-x: auto; color: var(--color-text-primary); white-space: pre; }
+.kw { color: #185FA5; }
+.cm { color: var(--color-text-secondary); font-style: italic; }
+.ty { color: #3C3489; }
+.st { color: #0F6E56; }
+.nm { color: #993C1D; }
+.num { color: #854F0B; }
+.fn { color: #993556; }
+@media (prefers-color-scheme: dark) {
+  .kw { color: #85B7EB; }
+  .ty { color: #AFA9EC; }
+  .st { color: #5DCAA5; }
+  .nm { color: #F0997B; }
+  .num { color: #EF9F27; }
+  .fn { color: #ED93B1; }
+}
+.note { font-family: var(--font-sans); font-size: 12px; color: var(--color-text-secondary); padding: 4px 0; line-height: 1.5; }
+.divider { height: 0.5px; background: var(--color-border-tertiary); }
+.row { display: flex; gap: 6px; align-items: baseline; }
+.lbl { font-family: var(--font-sans); font-size: 11px; color: var(--color-text-secondary); min-width: 70px; }
+code { font-family: var(--font-mono); font-size: 12px; background: var(--color-background-secondary); padding: 1px 5px; border-radius: 4px; color: var(--color-text-primary); }
+</style>
+
+<div class="cs">
+
+  <div class="card">
+    <div class="card-head">
+      <i class="ti ti-variable" aria-hidden="true" style="font-size:16px;color:var(--color-text-secondary)"></i>
+      <span>Variables y tipos básicos</span>
+      <span class="badge b-blue">fundamentos</span>
+    </div>
+    <div class="card-body">
+      <pre><span class="cm">// Tipos enteros</span>
+<span class="ty">int</span>    a = <span class="num">42</span>;
+<span class="ty">short</span>  b = <span class="num">100</span>;
+<span class="ty">long</span>   c = <span class="num">1000000L</span>;
+<span class="ty">char</span>   d = <span class="st">'A'</span>;   <span class="cm">// 1 byte</span>
+
+<span class="cm">// Tipos decimales</span>
+<span class="ty">float</span>  f = <span class="num">3.14f</span>;
+<span class="ty">double</span> g = <span class="num">3.14159</span>;
+
+<span class="cm">// Sin signo</span>
+<span class="kw">unsigned</span> <span class="ty">int</span> u = <span class="num">255</span>;
+
+<span class="cm">// Constante</span>
+<span class="kw">const</span> <span class="ty">int</span> MAX = <span class="num">100</span>;</pre>
+      <p class="note">Usar <code>sizeof(tipo)</code> para ver el tamaño en bytes de cualquier tipo.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <i class="ti ti-list" aria-hidden="true" style="font-size:16px;color:var(--color-text-secondary)"></i>
+      <span>Arrays y strings</span>
+      <span class="badge b-blue">fundamentos</span>
+    </div>
+    <div class="card-body">
+      <pre><span class="cm">// Array estático</span>
+<span class="ty">int</span> nums[<span class="num">5</span>] = {<span class="num">1</span>, <span class="num">2</span>, <span class="num">3</span>, <span class="num">4</span>, <span class="num">5</span>};
+nums[<span class="num">0</span>];  <span class="cm">// primer elemento</span>
+
+<span class="cm">// Array 2D</span>
+<span class="ty">int</span> mat[<span class="num">2</span>][<span class="num">3</span>] = {{<span class="num">1</span>,<span class="num">2</span>,<span class="num">3</span>},{<span class="num">4</span>,<span class="num">5</span>,<span class="num">6</span>}};
+
+<span class="cm">// String (array de char)</span>
+<span class="ty">char</span> str[] = <span class="st">"hola"</span>;  <span class="cm">// + '\0' al final</span>
+<span class="ty">char</span> str2[<span class="num">10</span>];
+
+<span class="cm">// Funciones útiles (#include &lt;string.h&gt;)</span>
+<span class="fn">strlen</span>(str);       <span class="cm">// longitud</span>
+<span class="fn">strcpy</span>(str2, str); <span class="cm">// copiar</span>
+<span class="fn">strcmp</span>(str, str2); <span class="cm">// comparar</span></pre>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <i class="ti ti-arrows-exchange" aria-hidden="true" style="font-size:16px;color:var(--color-text-secondary)"></i>
+      <span>Control de flujo</span>
+      <span class="badge b-teal">flujo</span>
+    </div>
+    <div class="card-body">
+      <pre><span class="cm">// if / else if / else</span>
+<span class="kw">if</span> (x &gt; <span class="num">0</span>) { ... }
+<span class="kw">else if</span> (x == <span class="num">0</span>) { ... }
+<span class="kw">else</span> { ... }
+
+<span class="cm">// switch</span>
+<span class="kw">switch</span> (x) {
+  <span class="kw">case</span> <span class="num">1</span>: ...; <span class="kw">break</span>;
+  <span class="kw">default</span>: ...;
+}
+
+<span class="cm">// Bucles</span>
+<span class="kw">for</span> (<span class="ty">int</span> i = <span class="num">0</span>; i &lt; n; i++) { ... }
+<span class="kw">while</span> (cond) { ... }
+<span class="kw">do</span> { ... } <span class="kw">while</span> (cond);
+
+<span class="cm">// Ternario</span>
+<span class="ty">int</span> max = (a &gt; b) ? a : b;</pre>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <i class="ti ti-pointer" aria-hidden="true" style="font-size:16px;color:var(--color-text-secondary)"></i>
+      <span>Punteros</span>
+      <span class="badge b-coral">esencial</span>
+    </div>
+    <div class="card-body">
+      <pre><span class="ty">int</span>  x = <span class="num">5</span>;
+<span class="ty">int</span> *p = &amp;x;   <span class="cm">// p apunta a x</span>
+
+*p = <span class="num">10</span>;       <span class="cm">// desreferenciar → x=10</span>
+<span class="fn">printf</span>(<span class="st">"%p"</span>, p); <span class="cm">// dirección</span>
+
+<span class="cm">// Puntero a array</span>
+<span class="ty">int</span> arr[] = {<span class="num">1</span>,<span class="num">2</span>,<span class="num">3</span>};
+<span class="ty">int</span> *q = arr;  <span class="cm">// = &arr[0]</span>
+*(q + <span class="num">1</span>);      <span class="cm">// = arr[1]</span>
+
+<span class="cm">// Puntero nulo</span>
+<span class="ty">int</span> *null_p = <span class="kw">NULL</span>;
+
+<span class="cm">// Puntero a puntero</span>
+<span class="ty">int</span> **pp = &amp;p;</pre>
+      <p class="note">Siempre inicializar punteros. Un puntero sin inicializar puede causar comportamiento indefinido.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <i class="ti ti-cpu" aria-hidden="true" style="font-size:16px;color:var(--color-text-secondary)"></i>
+      <span>Memoria dinámica</span>
+      <span class="badge b-coral">esencial</span>
+    </div>
+    <div class="card-body">
+      <pre><span class="cm">// #include &lt;stdlib.h&gt;</span>
+
+<span class="cm">// Reservar un int</span>
+<span class="ty">int</span> *p = (<span class="ty">int</span>*) <span class="fn">malloc</span>(<span class="kw">sizeof</span>(<span class="ty">int</span>));
+
+<span class="cm">// Array dinámico de n ints</span>
+<span class="ty">int</span> *arr = (<span class="ty">int</span>*) <span class="fn">malloc</span>(n * <span class="kw">sizeof</span>(<span class="ty">int</span>));
+
+<span class="cm">// Inicializado a 0</span>
+<span class="ty">int</span> *z = (<span class="ty">int</span>*) <span class="fn">calloc</span>(n, <span class="kw">sizeof</span>(<span class="ty">int</span>));
+
+<span class="cm">// Redimensionar</span>
+arr = (<span class="ty">int</span>*) <span class="fn">realloc</span>(arr, m * <span class="kw">sizeof</span>(<span class="ty">int</span>));
+
+<span class="cm">// Liberar (¡siempre!)</span>
+<span class="fn">free</span>(p);
+p = <span class="kw">NULL</span>;</pre>
+      <p class="note">Comprobar siempre que malloc no devuelve NULL antes de usar el puntero.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <i class="ti ti-function" aria-hidden="true" style="font-size:16px;color:var(--color-text-secondary)"></i>
+      <span>Funciones</span>
+      <span class="badge b-purple">funciones</span>
+    </div>
+    <div class="card-body">
+      <pre><span class="cm">// Declaración (prototipo)</span>
+<span class="ty">int</span> <span class="fn">suma</span>(<span class="ty">int</span> a, <span class="ty">int</span> b);
+
+<span class="cm">// Definición</span>
+<span class="ty">int</span> <span class="fn">suma</span>(<span class="ty">int</span> a, <span class="ty">int</span> b) {
+  <span class="kw">return</span> a + b;
+}
+
+<span class="cm">// Sin retorno</span>
+<span class="ty">void</span> <span class="fn">imprimir</span>(<span class="ty">char</span> *msg) {
+  <span class="fn">printf</span>(<span class="st">"%s\n"</span>, msg);
+}
+
+<span class="cm">// Por referencia (con puntero)</span>
+<span class="ty">void</span> <span class="fn">doble</span>(<span class="ty">int</span> *x) {
+  *x *= <span class="num">2</span>;
+}
+
+<span class="cm">// Función main</span>
+<span class="ty">int</span> <span class="fn">main</span>(<span class="ty">int</span> argc, <span class="ty">char</span> *argv[]) {
+  <span class="kw">return</span> <span class="num">0</span>;
+}</pre>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <i class="ti ti-box" aria-hidden="true" style="font-size:16px;color:var(--color-text-secondary)"></i>
+      <span>Structs</span>
+      <span class="badge b-amber">estructuras</span>
+    </div>
+    <div class="card-body">
+      <pre><span class="cm">// Definir struct</span>
+<span class="kw">typedef struct</span> {
+  <span class="ty">char</span>  nombre[<span class="num">50</span>];
+  <span class="ty">int</span>   edad;
+  <span class="ty">float</span> nota;
+} <span class="ty">Persona</span>;
+
+<span class="cm">// Crear e inicializar</span>
+<span class="ty">Persona</span> p = {<span class="st">"Ana"</span>, <span class="num">21</span>, <span class="num">9.5f</span>};
+p.edad = <span class="num">22</span>;           <span class="cm">// acceso directo</span>
+
+<span class="cm">// Puntero a struct</span>
+<span class="ty">Persona</span> *ptr = &amp;p;
+ptr-&gt;edad = <span class="num">23</span>;        <span class="cm">// flecha</span>
+
+<span class="cm">// Struct dinámico</span>
+<span class="ty">Persona</span> *q = (<span class="ty">Persona</span>*) <span class="fn">malloc</span>(<span class="kw">sizeof</span>(<span class="ty">Persona</span>));
+<span class="fn">free</span>(q);</pre>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <i class="ti ti-tag" aria-hidden="true" style="font-size:16px;color:var(--color-text-secondary)"></i>
+      <span>Enums y typedef</span>
+      <span class="badge b-amber">estructuras</span>
+    </div>
+    <div class="card-body">
+      <pre><span class="cm">// Enum</span>
+<span class="kw">typedef enum</span> {
+  <span class="nm">LUNES</span>, <span class="nm">MARTES</span>, <span class="nm">MIERCOLES</span>,
+  <span class="nm">JUEVES</span>, <span class="nm">VIERNES</span>
+} <span class="ty">DiaSemana</span>;
+
+<span class="ty">DiaSemana</span> hoy = <span class="nm">LUNES</span>;
+
+<span class="cm">// Enum con valores</span>
+<span class="kw">typedef enum</span> {
+  <span class="nm">ERROR</span> = -<span class="num">1</span>,
+  <span class="nm">OK</span>    =  <span class="num">0</span>,
+  <span class="nm">WARN</span>  =  <span class="num">1</span>
+} <span class="ty">Status</span>;
+
+<span class="cm">// typedef simple</span>
+<span class="kw">typedef</span> <span class="ty">unsigned char</span> <span class="ty">byte</span>;
+<span class="ty">byte</span> b = <span class="num">255</span>;</pre>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <i class="ti ti-link" aria-hidden="true" style="font-size:16px;color:var(--color-text-secondary)"></i>
+      <span>Listas enlazadas</span>
+      <span class="badge b-green">estructuras avanzadas</span>
+    </div>
+    <div class="card-body">
+      <pre><span class="cm">// Nodo</span>
+<span class="kw">typedef struct</span> Nodo {
+  <span class="ty">int</span>         valor;
+  <span class="kw">struct</span> <span class="ty">Nodo</span> *siguiente;
+} <span class="ty">Nodo</span>;
+
+<span class="cm">// Crear nodo</span>
+<span class="ty">Nodo</span> *<span class="fn">nuevo</span>(<span class="ty">int</span> v) {
+  <span class="ty">Nodo</span> *n = <span class="fn">malloc</span>(<span class="kw">sizeof</span>(<span class="ty">Nodo</span>));
+  n-&gt;valor = v;
+  n-&gt;siguiente = <span class="kw">NULL</span>;
+  <span class="kw">return</span> n;
+}
+
+<span class="cm">// Recorrer</span>
+<span class="ty">Nodo</span> *cur = cabeza;
+<span class="kw">while</span> (cur != <span class="kw">NULL</span>) {
+  <span class="fn">printf</span>(<span class="st">"%d\n"</span>, cur-&gt;valor);
+  cur = cur-&gt;siguiente;
+}</pre>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <i class="ti ti-file-text" aria-hidden="true" style="font-size:16px;color:var(--color-text-secondary)"></i>
+      <span>E/S y archivos</span>
+      <span class="badge b-teal">I/O</span>
+    </div>
+    <div class="card-body">
+      <pre><span class="cm">// Consola (#include &lt;stdio.h&gt;)</span>
+<span class="fn">printf</span>(<span class="st">"%d %f %s\n"</span>, i, f, s);
+<span class="fn">scanf</span>(<span class="st">"%d"</span>, &amp;x);
+<span class="fn">fgets</span>(buf, <span class="kw">sizeof</span>(buf), stdin);
+
+<span class="cm">// Abrir / leer / escribir archivo</span>
+<span class="ty">FILE</span> *fp = <span class="fn">fopen</span>(<span class="st">"datos.txt"</span>, <span class="st">"r"</span>);
+<span class="kw">if</span> (!fp) { <span class="cm">/* error */</span> }
+
+<span class="ty">char</span> linea[<span class="num">128</span>];
+<span class="kw">while</span> (<span class="fn">fgets</span>(linea, <span class="kw">sizeof</span>(linea), fp))
+  <span class="fn">printf</span>(<span class="st">"%s"</span>, linea);
+
+<span class="fn">fclose</span>(fp);
+
+<span class="cm">// Modos: "r" "w" "a" "rb" "wb"</span>
+<span class="fn">fprintf</span>(fp, <span class="st">"%d\n"</span>, x); <span class="cm">// escribir</span></pre>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <i class="ti ti-hash" aria-hidden="true" style="font-size:16px;color:var(--color-text-secondary)"></i>
+      <span>Preprocesador</span>
+      <span class="badge b-pink">macros</span>
+    </div>
+    <div class="card-body">
+      <pre><span class="cm">// Includes</span>
+<span class="kw">#include</span> <span class="st">&lt;stdio.h&gt;</span>   <span class="cm">// librería</span>
+<span class="kw">#include</span> <span class="st">"mifunc.h"</span>  <span class="cm">// propio</span>
+
+<span class="cm">// Constantes</span>
+<span class="kw">#define</span> <span class="nm">PI</span>    <span class="num">3.14159</span>
+<span class="kw">#define</span> <span class="nm">MAX</span>   <span class="num">100</span>
+
+<span class="cm">// Macros con parámetros</span>
+<span class="kw">#define</span> <span class="fn">SQ</span>(x)  ((x)*(x))
+<span class="kw">#define</span> <span class="fn">MIN</span>(a,b) ((a)&lt;(b)?(a):(b))
+
+<span class="cm">// Guardas de inclusión</span>
+<span class="kw">#ifndef</span> <span class="nm">MIFUNC_H</span>
+<span class="kw">#define</span> <span class="nm">MIFUNC_H</span>
+  <span class="cm">// ... declaraciones ...</span>
+<span class="kw">#endif</span>
+
+<span class="cm">// Compilación condicional</span>
+<span class="kw">#ifdef</span> <span class="nm">DEBUG</span>
+  <span class="fn">printf</span>(<span class="st">"debug\n"</span>);
+<span class="kw">#endif</span></pre>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <i class="ti ti-math-function" aria-hidden="true" style="font-size:16px;color:var(--color-text-secondary)"></i>
+      <span>Punteros a función</span>
+      <span class="badge b-purple">funciones</span>
+    </div>
+    <div class="card-body">
+      <pre><span class="cm">// Declarar puntero a función</span>
+<span class="ty">int</span> (*<span class="nm">op</span>)(<span class="ty">int</span>, <span class="ty">int</span>);
+
+<span class="ty">int</span> <span class="fn">sumar</span>(<span class="ty">int</span> a, <span class="ty">int</span> b) { <span class="kw">return</span> a+b; }
+<span class="ty">int</span> <span class="fn">restar</span>(<span class="ty">int</span> a, <span class="ty">int</span> b) { <span class="kw">return</span> a-b; }
+
+op = <span class="fn">sumar</span>;
+<span class="fn">printf</span>(<span class="st">"%d\n"</span>, op(<span class="num">3</span>, <span class="num">2</span>));  <span class="cm">// 5</span>
+op = <span class="fn">restar</span>;
+<span class="fn">printf</span>(<span class="st">"%d\n"</span>, op(<span class="num">3</span>, <span class="num">2</span>));  <span class="cm">// 1</span>
+
+<span class="cm">// Como parámetro (ej: qsort)</span>
+<span class="ty">int</span> <span class="fn">cmp</span>(<span class="kw">const</span> <span class="ty">void</span> *a, <span class="kw">const</span> <span class="ty">void</span> *b) {
+  <span class="kw">return</span> (*(<span class="ty">int</span>*)a - *(<span class="ty">int</span>*)b);
+}
+<span class="fn">qsort</span>(arr, n, <span class="kw">sizeof</span>(<span class="ty">int</span>), cmp);</pre>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <i class="ti ti-table" aria-hidden="true" style="font-size:16px;color:var(--color-text-secondary)"></i>
+      <span>Especificadores printf / scanf</span>
+      <span class="badge b-teal">I/O</span>
+    </div>
+    <div class="card-body">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px 16px;margin-top:2px">
+        <div class="row"><code>%d</code><span class="lbl">int</span></div>
+        <div class="row"><code>%u</code><span class="lbl">unsigned int</span></div>
+        <div class="row"><code>%ld</code><span class="lbl">long</span></div>
+        <div class="row"><code>%lld</code><span class="lbl">long long</span></div>
+        <div class="row"><code>%f</code><span class="lbl">float/double</span></div>
+        <div class="row"><code>%lf</code><span class="lbl">double (scanf)</span></div>
+        <div class="row"><code>%e</code><span class="lbl">notación cient.</span></div>
+        <div class="row"><code>%c</code><span class="lbl">char</span></div>
+        <div class="row"><code>%s</code><span class="lbl">string</span></div>
+        <div class="row"><code>%p</code><span class="lbl">puntero</span></div>
+        <div class="row"><code>%x</code><span class="lbl">hexadecimal</span></div>
+        <div class="row"><code>%o</code><span class="lbl">octal</span></div>
+        <div class="row"><code>%%</code><span class="lbl">literal %</span></div>
+        <div class="row"><code>%5d</code><span class="lbl">ancho 5</span></div>
+        <div class="row"><code>%-5d</code><span class="lbl">alinear izq.</span></div>
+        <div class="row"><code>%.2f</code><span class="lbl">2 decimales</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <i class="ti ti-brand-c" aria-hidden="true" style="font-size:16px;color:var(--color-text-secondary)"></i>
+      <span>Librerías estándar clave</span>
+      <span class="badge b-pink">stdlib</span>
+    </div>
+    <div class="card-body">
+      <div style="display:flex;flex-direction:column;gap:7px">
+        <div><code>&lt;stdio.h&gt;</code> <span class="note" style="display:inline">— printf, scanf, fopen, fclose, fgets</span></div>
+        <div><code>&lt;stdlib.h&gt;</code> <span class="note" style="display:inline">— malloc, free, exit, atoi, rand, qsort</span></div>
+        <div><code>&lt;string.h&gt;</code> <span class="note" style="display:inline">— strlen, strcpy, strcmp, strcat, memset</span></div>
+        <div><code>&lt;math.h&gt;</code> <span class="note" style="display:inline">— sqrt, pow, fabs, sin, cos, floor (-lm)</span></div>
+        <div><code>&lt;ctype.h&gt;</code> <span class="note" style="display:inline">— isalpha, isdigit, tolower, toupper</span></div>
+        <div><code>&lt;time.h&gt;</code> <span class="note" style="display:inline">— time, clock, difftime, localtime</span></div>
+        <div><code>&lt;stdbool.h&gt;</code> <span class="note" style="display:inline">— bool, true, false (C99+)</span></div>
+        <div><code>&lt;stdint.h&gt;</code> <span class="note" style="display:inline">— int8_t, uint32_t, int64_t, etc.</span></div>
+      </div>
+    </div>
+  </div>
+
+</div>
