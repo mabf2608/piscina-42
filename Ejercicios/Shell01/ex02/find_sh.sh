@@ -1,1 +1,2 @@
-ls -1 | sed "s/\.[^.]*$//"
+#!/bin/sh
+find -name "*.sh" -type f -exec basename -s .sh {} ";"  | cat -e

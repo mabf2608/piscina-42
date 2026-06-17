@@ -1,1 +1,4 @@
-FT_USER=daemon; id -Gn $FT_USER | sed "s/ /,/g" | tr -d "\n"
+#!/bin/sh
+FT_USER=bocal
+groups=$(id -Gn $FT_USER | tr ' ' ',')
+echo -n "$groups"
