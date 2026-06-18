@@ -1,18 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_char.c                                          :+:      :+:    :+:   */
+/*   ft_print_numbers.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mibonill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/18 08:59:25 by mibonill          #+#    #+#             */
-/*   Updated: 2026/06/18 10:19:00 by mibonill         ###   ########.fr       */
+/*   Created: 2026/06/18 10:05:40 by mibonill          #+#    #+#             */
+/*   Updated: 2026/06/18 10:12:51 by mibonill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	ft_putchar(char c)
+void	ft_print_numbers(void)
 {
-	write(1, &c, 1);
+	char	num;
+
+	num = '0';
+	while (num <= '9')
+	{
+		write (1, &num, 1);
+		num++;
+	}
 }

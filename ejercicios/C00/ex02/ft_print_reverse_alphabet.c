@@ -1,18 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_char.c                                          :+:      :+:    :+:   */
+/*   ft_print_reverse_alphabet.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mibonill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/18 08:59:25 by mibonill          #+#    #+#             */
-/*   Updated: 2026/06/18 10:19:00 by mibonill         ###   ########.fr       */
+/*   Created: 2026/06/18 09:25:24 by mibonill          #+#    #+#             */
+/*   Updated: 2026/06/18 09:35:46 by mibonill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	ft_putchar(char c)
+void	ft_print_reverse_alphabet(void)
 {
-	write(1, &c, 1);
+	char	zyx;
+
+	zyx = 'z';
+	while (zyx >= 'a')
+	{
+		write (1, &zyx, 1);
+		zyx--;
+	}
 }

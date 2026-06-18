@@ -1,18 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_char.c                                          :+:      :+:    :+:   */
+/*   ft_print_alphabet.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mibonill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/18 08:59:25 by mibonill          #+#    #+#             */
-/*   Updated: 2026/06/18 10:19:00 by mibonill         ###   ########.fr       */
+/*   Created: 2026/06/18 09:01:45 by mibonill          #+#    #+#             */
+/*   Updated: 2026/06/18 09:22:20 by mibonill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	ft_putchar(char c)
+void	ft_print_alphabet(void)
 {
-	write(1, &c, 1);
+	char	abc;
+
+	abc = 'a';
+	while (abc <= 'z')
+	{
+		write(1, &abc, 1);
+		abc++;
+	}
 }
