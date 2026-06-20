@@ -1,51 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rush_03.c                                          :+:      :+:    :+:   */
+/*   rush_02.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mibonill <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mabf2608 <mabf2608@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/20 11:00:24 by mibonill          #+#    #+#             */
-/*   Updated: 2026/06/20 13:13:14 by mibonill         ###   ########.fr       */
+/*   Updated: 2026/06/20 17:02:28 by mibonill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
+void	ft_putchar(int i, int j, int y, int x);
+
 void	rush(int x, int y)
 {
-	int	h;
-	int	l;
-	
-	h = 1;
-	l = 1;
+	int	i;
+	int	j;
 
-	while (h <= y)
+	i = 1;
+	j = 1;
+	while (i <= y)
 	{
-		l = 1;
-		while ( l <= x || l <= y)
+		j = 1;
+		while (j <= x)
 		{
-			if (l == 1 && l == y) 
-			{
-				write (1, "A", 1);
-			}
-			else if( (l > 1 && l < x) || (h > 1 && l < y))
-			{
-				write (1, "B", 1);
-			}
-			else
-			{
-				write (1, "C", 1);
-			}
-			l++;
+			ft_putchar(i, j, y, x);
+			j++;
 		}
-			write (1, "\n", 1);
-		h++;
+		write (1, "\n", 1);
+		i++;
 	}
-}
-
-int	main (void)
-{
-	rush (5, 5);
-	return (0);
 }
