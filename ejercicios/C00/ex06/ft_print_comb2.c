@@ -6,62 +6,46 @@
 /*   By: mibonill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/21 12:34:10 by mibonill          #+#    #+#             */
-/*   Updated: 2026/06/21 13:30:21 by mibonill         ###   ########.fr       */
+/*   Updated: 2026/06/22 18:47:59 by mibonill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	ft_print_comb2(void)
+void	ft_print_conditions(char arr[])
 {
-	char	i;
-	char	j;
-	char	k;
-	char	l;
-
-	i = '0';
-	j = '0';
-	k = '0';
-	l = '0';
-
-	while (i <= '9')
+	if (arr[3] > arr[0] || (arr[3] == arr[0] && arr[4] > arr[1]))
 	{
-		j = '0';
-		while (j <= '9')
-		{
-			k = '0';
-			while (k <= '9')
-			{
-				l = '0';
-				while (l <= '9')
-				{
-					if (l > j && k >= i && l >= i)
-					{
-						write (1, &i, 1);
-						write (1, &j, 1);
-						write (1, " ", 1);
-						write (1, &k, 1);
-						write (1, &l, 1);
-						if (i == '9' && j == '9' && k == '9' && l == '9')
-						{
-						}
-						else
-						{
-							write (1, ", ", 2);
-						}
-					}
-					l++;
-				}
-				k++;
-			}
-			j++;
-		}
-		i++;
+		write (1, arr, 5);
+		if (arr[0] != '9' || arr[1] != '8' || arr[3] != '9' || arr[4] != '9')
+			write (1, ", ", 2);
 	}
 }
 
-int	main (void)
+void	ft_print_comb2(void)
 {
-	ft_print_comb2();
-	return (0);
+	char	arr[5];
+
+	arr[0] = '0';
+	arr[2] = ' ';
+	while (arr[0] <= '9')
+	{
+		arr[1] = '0';
+		while (arr[1] <= '9')
+		{
+			arr[3] = '0';
+			while (arr[3] <= '9')
+			{
+				arr[4] = '0';
+				while (arr[4] <= '9')
+				{
+					ft_print_conditions(arr);
+					arr[4]++;
+				}
+				arr[3]++;
+			}
+			arr[1]++;
+		}
+		arr[0]++;
+	}
 }
