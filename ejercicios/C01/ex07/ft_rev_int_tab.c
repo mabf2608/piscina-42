@@ -3,32 +3,50 @@
 /*                                                        :::      ::::::::   */
 /*   ft_rev_int_tab.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mibonill <mibonill@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: mibonill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/19 15:10:56 by mibonill          #+#    #+#             */
-/*   Updated: 2026/06/22 20:35:02 by mibonill         ###   ########.fr       */
+/*   Created: 2026/06/23 18:21:48 by mibonill          #+#    #+#             */
+/*   Updated: 2026/06/23 18:24:21 by mibonill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
 void	ft_rev_int_tab(int *tab, int size)
-{	
-	char	aux;
-	int	n [size];
+{
+	int	temp;
+	int	i;
+	int	end;
 
-
-	while (n >= tab)
+	temp = 0;
+	i = 0;
+	end = size -1;
+	while (i <= end)
 	{
-		aux = *n + '0'; 
-		write (1, &aux, 1);
-		n--;
+		temp = tab[i];
+		tab[i] = tab[end];
+		tab[end] = temp;
+		end--;
+		i++;
 	}
 }
-
+/*
+void	ft_imprimir(int *tab, int size)
+{
+	int	i;
+	char	aux;
+	i = 0;
+	while (i <=size-1)
+	{
+		aux = tab[i] + '0';
+		write(1, &aux, 1);
+		i++;
+	}
+}
 int	main(void)
 {
-	int tab[] = {4321};
+	int tab[] = {4, 3, 2, 1};
 	ft_rev_int_tab(tab, 4);
 	return (0);
 }
+*/
