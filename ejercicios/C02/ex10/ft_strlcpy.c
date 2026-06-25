@@ -6,40 +6,41 @@
 /*   By: mibonill <mibonill@student.42malaga.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/25 14:16:16 by mibonill          #+#    #+#             */
-/*   Updated: 2026/06/25 14:37:51 by mibonill         ###   ########.fr       */
+/*   Updated: 2026/06/25 19:11:08 by mibonill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
-#include <stdio.h>
 
-unsigned int ft_strlcpy(char *dest, char *src, unsigned int size)
+unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
 {
-	unsigned	int		i;
+	unsigned int	i;
 
 	i = 0;
 	while (*src)
 	{
-		if (i <= size - 1)
+		if (size != 0 && i + 1 < size)
 		{
 			*dest = *src;
 			write (1, dest, 1);
+			dest++;
 		}
-		dest++;
 		src++;
 		i++;
 	}
-	*dest = '\0';
+	if (size != 0)
+		*dest = '\0';
 	return (i);
 }
-
+/*
 int		main(void)
 {
-	int		x = 5;
-	char	*str = "Hola Buenas";
+	int		x = 1;
+	char	*str = "Hola Ciao";
 	char	dest[x];
-	int aux = ft_strlcpy(dest, str, x);
-	printf("%d", aux);
+	char  aux = ft_strlcpy(dest, str, x) + '0';
+	write (1, &aux, 1);
 
 	return (0);
 }
+*/
