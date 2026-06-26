@@ -6,26 +6,37 @@
 /*   By: mibonill <mibonill@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/25 19:17:47 by mibonill          #+#    #+#             */
-/*   Updated: 2026/06/25 19:37:08 by mibonill         ###   ########.fr       */
+/*   Updated: 2026/06/26 13:53:29 by mibonill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <unistd.h>
+
 void	ft_putstr_non_printable(char *str)
 {
-	char	arr[4];
+	char	*hex;
+	char	arr[3];
 
+	hex = "0123456789abcdef";
 	arr[0] = '\\';
-	arr[1] = '0';
 	while (*str)
 	{
 		if (*str < 32 || *str == 127)
 		{
-			arr[2] = *str / 16;
-			arr[3] = *str % 16;
-			write (1, arr, 4);
+			arr[1] = hex[(unsigned char)*str / 16];
+			arr[2] = hex[(unsigned char)*str % 16];
+			write (1, arr, 3);
 		}
 		else
 			write (1, str, 1);
 		str++;
 	}
 }
+/*
+int	main(void)
+{
+	char	arr[] = "Coucou\ntu vas bien?";
+	ft_putstr_non_printable(arr);
+	return (0);
+}
+*/
