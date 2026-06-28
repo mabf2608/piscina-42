@@ -6,16 +6,16 @@
 /*   By: mibonill <mibonill@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/27 20:02:46 by mibonill          #+#    #+#             */
-/*   Updated: 2026/06/27 20:12:08 by mibonill         ###   ########.fr       */
+/*   Updated: 2026/06/28 09:26:15 by mibonill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+/*#include <stdio.h>*/
 
-char    *ft_strncat(char *dest, char *src, unsigned int nb)
+char	*ft_strncat(char *dest, char *src, unsigned int nb)
 {
-	unsigned int i;
-	unsigned int j;
+	unsigned int	i;
+	unsigned int	j;
 
 	i = 0;
 	j = 0;
@@ -27,10 +27,10 @@ char    *ft_strncat(char *dest, char *src, unsigned int nb)
 		i++;
 		j++;
 	}
-	dest[i] = src[j];
+	dest[i] = '\0';
 	return (dest);
 }
-
+/*
 int main(void)
 {
  	char    dest[50] = "Hola Buenas Tardes";
@@ -40,3 +40,4 @@ int main(void)
 	printf("%s", res);
 	return (0);
 }
+*/
