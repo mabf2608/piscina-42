@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mibonill <mibonill@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: mibonill <mibonill@student.42malaga.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/27 19:03:00 by mibonill          #+#    #+#             */
-/*   Updated: 2026/06/27 19:24:19 by mibonill         ###   ########.fr       */
+/*   Created: 2026/06/28 12:16:44 by mibonill          #+#    #+#             */
+/*   Updated: 2026/06/28 12:16:47 by mibonill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*#include <stdio.h>*/
+//#include <stdio.h>
 
 int	ft_strcmp(char *s1, char *s2)
 {

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strncat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mibonill <mibonill@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: mibonill <mibonill@student.42malaga.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/27 20:02:46 by mibonill          #+#    #+#             */
-/*   Updated: 2026/06/28 09:26:15 by mibonill         ###   ########.fr       */
+/*   Created: 2026/06/28 12:17:08 by mibonill          #+#    #+#             */
+/*   Updated: 2026/06/28 12:17:09 by mibonill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*#include <stdio.h>*/
+//#include <stdio.h>
 
 char	*ft_strncat(char *dest, char *src, unsigned int nb)
 {

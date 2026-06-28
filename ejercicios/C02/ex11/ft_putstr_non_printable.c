@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putstr_non_printable.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mibonill <mibonill@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: mibonill <mibonill@student.42malaga.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/25 19:17:47 by mibonill          #+#    #+#             */
-/*   Updated: 2026/06/26 13:53:29 by mibonill         ###   ########.fr       */
+/*   Created: 2026/06/28 12:11:54 by mibonill          #+#    #+#             */
+/*   Updated: 2026/06/28 12:11:58 by mibonill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
